@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{8FC1CC79-4B2F-44F4-9304-FC35D301F4F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{E66D23C1-585C-4EA0-A5FF-7DD1F9F0D8CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{21276757-D3C0-4C6B-92F4-FBBB9CABDE17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{E1DECA57-E0C9-4307-BBAC-14EEBD3CA15C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{CE00DADA-A4C6-4DA1-9E03-F101EF1DC98C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{9CDCA434-5D71-4E0B-B2BA-406C4376F854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{34A9A25A-51EF-4406-8E47-65603DD1F10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.WebApi", "src\AnimeFlix.WebApi\AnimeFlix.WebApi.csproj", "{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.Application", "src\AnimeFlix.Application\AnimeFlix.Application.csproj", "{B63DF7C8-693F-4BAC-A13A-CA057D31894F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.Domain", "src\AnimeFlix.Domain\AnimeFlix.Domain.csproj", "{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.Infra.CrossCutting.IoC", "src\AnimeFlix.Infra.CrossCutting.IoC\AnimeFlix.Infra.CrossCutting.IoC.csproj", "{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.Domain.Core", "src\AnimeFlix.Domain.Core\AnimeFlix.Domain.Core.csproj", "{10F6B6F3-6413-432D-895C-4A7BBCCABF9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeFlix.Infra.CrossCutting.Bus", "src\AnimeFlix.Infra.CrossCutting.Bus\AnimeFlix.Infra.CrossCutting.Bus.csproj", "{3F921512-FFB7-40B1-AC95-3BEAD321FD30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B63DF7C8-693F-4BAC-A13A-CA057D31894F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B63DF7C8-693F-4BAC-A13A-CA057D31894F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B63DF7C8-693F-4BAC-A13A-CA057D31894F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B63DF7C8-693F-4BAC-A13A-CA057D31894F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F6B6F3-6413-432D-895C-4A7BBCCABF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F6B6F3-6413-432D-895C-4A7BBCCABF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F6B6F3-6413-432D-895C-4A7BBCCABF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F6B6F3-6413-432D-895C-4A7BBCCABF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F921512-FFB7-40B1-AC95-3BEAD321FD30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F921512-FFB7-40B1-AC95-3BEAD321FD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F921512-FFB7-40B1-AC95-3BEAD321FD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F921512-FFB7-40B1-AC95-3BEAD321FD30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9CDCA434-5D71-4E0B-B2BA-406C4376F854} = {CE00DADA-A4C6-4DA1-9E03-F101EF1DC98C}
+		{34A9A25A-51EF-4406-8E47-65603DD1F10F} = {CE00DADA-A4C6-4DA1-9E03-F101EF1DC98C}
+		{3EC17812-DDF1-4F2C-B08E-4EAE85CBD4E3} = {8FC1CC79-4B2F-44F4-9304-FC35D301F4F9}
+		{B63DF7C8-693F-4BAC-A13A-CA057D31894F} = {21276757-D3C0-4C6B-92F4-FBBB9CABDE17}
+		{A2D80ED4-B6BB-412E-BBE4-F18C6D01F43B} = {E1DECA57-E0C9-4307-BBAC-14EEBD3CA15C}
+		{86363BEF-C65C-4BA2-AEA3-62B66BBB8BC7} = {34A9A25A-51EF-4406-8E47-65603DD1F10F}
+		{10F6B6F3-6413-432D-895C-4A7BBCCABF9D} = {E1DECA57-E0C9-4307-BBAC-14EEBD3CA15C}
+		{3F921512-FFB7-40B1-AC95-3BEAD321FD30} = {34A9A25A-51EF-4406-8E47-65603DD1F10F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DAFC2E8-1BE4-4671-B9D9-4765500E088E}
+	EndGlobalSection
+EndGlobal

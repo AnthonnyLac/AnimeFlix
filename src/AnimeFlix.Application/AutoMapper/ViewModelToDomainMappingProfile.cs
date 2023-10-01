@@ -9,7 +9,7 @@ namespace AnimeFlix.Application.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<AnimeViewModel, RegisterNewAnimeCommand>()
-                .ConstructUsing(c => new RegisterNewAnimeCommand(c.Title, c.Description, c.Genre, c.Rating, c.ReleaseYear, c.CoverImage, c.Trailer));
+                .ConstructUsing(c => new RegisterNewAnimeCommand(c.Title, c.Description, c.Genre, c.ReleaseYear, c.CoverImage, c.Trailer));
         }
     }
 }

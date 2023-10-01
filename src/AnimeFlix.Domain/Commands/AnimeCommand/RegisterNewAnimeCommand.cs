@@ -5,12 +5,11 @@ namespace AnimeFlix.Domain.Commands.AnimeCommand
 {
     public class RegisterNewAnimeCommand : AnimeCommand
     {
-        public RegisterNewAnimeCommand(string title, string description, string genre, string rating, int releaseYear, string coverImage, string trailer)
+        public RegisterNewAnimeCommand(string title, string description, int genre,  int releaseYear, string coverImage, string trailer)
         {
             Title = title;
             Description = description;
             Genre = genre;
-            Rating = rating;
             ReleaseYear = releaseYear;
             CoverImage = coverImage;
             Trailer = trailer;

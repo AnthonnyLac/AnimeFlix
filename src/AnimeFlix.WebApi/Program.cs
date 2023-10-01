@@ -22,6 +22,9 @@ builder.Services.AddAutoMapperConfiguration();
 // .NET Native DI Abstraction
 builder.Services.AddDependencyInjectionConfiguration();
 
+// Setting DBContexts
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

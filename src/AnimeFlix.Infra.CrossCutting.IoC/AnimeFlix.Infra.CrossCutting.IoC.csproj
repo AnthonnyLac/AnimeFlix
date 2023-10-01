@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AnimeFlix.Application\AnimeFlix.Application.csproj" />
     <ProjectReference Include="..\AnimeFlix.Infra.CrossCutting.Bus\AnimeFlix.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\AnimeFlix.Infra.Data\AnimeFlix.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -26,6 +26,7 @@ namespace AnimeFlix.Domain.Models.Anime
             Trailer = trailer;
         }
 
+
         protected AnimeModel()
         {
         }
@@ -39,5 +40,7 @@ namespace AnimeFlix.Domain.Models.Anime
         public string CoverImage { get; private set; }
         public string Trailer { get; private set; }
         public IEnumerable<AnimeEpisodeModel> AnimeEpisodes { get; private set; }
+        public void SetId(int id) => Id = id;
+
     }
 }

@@ -10,6 +10,9 @@ namespace AnimeFlix.Application.AutoMapper
         {
             CreateMap<AnimeViewModel, RegisterNewAnimeCommand>()
                 .ConstructUsing(c => new RegisterNewAnimeCommand(c.Title, c.Description, c.Genre, c.ReleaseYear, c.CoverImage, c.Trailer));
+
+            CreateMap<AnimeViewModel, UpdateAnimeCommand>()
+                .ConstructUsing(c => new UpdateAnimeCommand(c.Id, c.Title, c.Description, c.Genre, c.ReleaseYear, c.CoverImage, c.Trailer));
         }
     }
 }

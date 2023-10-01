@@ -5,6 +5,11 @@ namespace AnimeFlix.Domain.Validations.AnimeValidations
 {
     public abstract class AnimeValidation<T> : AbstractValidator<T> where T : AnimeCommand
     {
+        protected void ValidateId()
+        {
+            RuleFor(c => c.Id)
+                .GreaterThan(0).WithMessage("Invalid Id");
+        }
         protected void ValidateName()
         {
             RuleFor(c => c.Title)
@@ -30,6 +35,7 @@ namespace AnimeFlix.Domain.Validations.AnimeValidations
             RuleFor(c => c.ReleaseYear)
                 .GreaterThan(0).WithMessage("Invalid ReleaseYear");
         }
+
 
     }
 }

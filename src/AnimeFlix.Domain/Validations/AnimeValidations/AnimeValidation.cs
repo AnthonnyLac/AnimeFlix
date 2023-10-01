@@ -22,8 +22,7 @@ namespace AnimeFlix.Domain.Validations.AnimeValidations
         protected void ValidateGenre()
         {
             RuleFor(c => c.Genre)
-                .NotEmpty().WithMessage("Invalid Genre")
-                .Length(2, 50).WithMessage("Invalid Genre Size");
+                .GreaterThan(0).WithMessage("Invalid Genre");
         }
 
         protected void ValidateReleaseYear()

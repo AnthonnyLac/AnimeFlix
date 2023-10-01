@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using AnimeFlix.Domain.Core.Data;
+using FluentValidation.Results;
 
 namespace AnimeFlix.Domain.Core.Commands
 {
@@ -16,11 +17,11 @@ namespace AnimeFlix.Domain.Core.Commands
             ValidationResult.Errors.Add(new ValidationFailure(string.Empty, mensagem));
         }
 
-        protected ValidationResult Commit(string message)
+        protected async Task<ValidationResult> Commit(IUnitOfWork uow)
         {
-            if(!string.IsNullOrEmpty(message))
+            if (!(await uow.Commit()))
             {
-                AddError(message);
+                AddError("Commit Error");
             }
 
             return ValidationResult;

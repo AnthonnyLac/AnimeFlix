@@ -15,6 +15,23 @@ namespace AnimeFlix.WebApi.Controllers
         {
             _animeAppService = animeAppService;
         }
+        [HttpGet]
+        [Route("get-anime-list")]
+        public async Task<IActionResult> GetAnime()
+        {
+            var result = await _animeAppService.GetAll();
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("get-anime-by-id")]
+        public async Task<IActionResult> GetAnimeById(int id)
+        {
+            var result = await _animeAppService.GetById(id);
+
+            return Ok(result);
+        }
 
         [HttpPost]
         [Route("new-anime")]
@@ -26,6 +43,27 @@ namespace AnimeFlix.WebApi.Controllers
                 return BadRequest(result);
 
             return CreatedAtAction(nameof(RegisterAnime), viewModel);
+        }
+
+        [HttpPatch]
+        [Route("update-anime")]
+        public async Task<IActionResult> Update(AnimeViewModel viewModel)
+        {
+            var result = await _animeAppService.Update(viewModel);
+
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("delete-anime")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _animeAppService.Remove(id);
+
+            return Ok();
         }
     }
 }

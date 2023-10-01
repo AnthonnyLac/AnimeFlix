@@ -24,6 +24,8 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
 
             // Domain - Commands
             services.AddScoped<IRequestHandler<RegisterNewAnimeCommand, ValidationResult>, AnimeCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateAnimeCommand, ValidationResult>, AnimeCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteAnimeCommand, ValidationResult>, AnimeCommandHandler>();
 
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();

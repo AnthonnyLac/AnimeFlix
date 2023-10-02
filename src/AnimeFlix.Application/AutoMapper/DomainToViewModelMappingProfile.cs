@@ -1,6 +1,7 @@
 ﻿using AnimeFlix.Application.ViewModels;
 using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Models.Anime;
+using AnimeFlix.Domain.Models.Character;
 using AutoMapper;
 
 namespace AnimeFlix.Application.AutoMapper
@@ -19,6 +20,16 @@ namespace AnimeFlix.Application.AutoMapper
                         CoverImage = c.CoverImage,
                         Trailer = c.Trailer
                     });
+
+            CreateMap<CharacterModel, CharacterViewModel>()
+                .ConstructUsing(c => new CharacterViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    ImageUrl = c.ImageUrl,
+                    AnimeId = c.AnimeId
+                });
         }
     }
 }

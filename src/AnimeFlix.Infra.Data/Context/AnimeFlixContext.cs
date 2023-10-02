@@ -1,6 +1,7 @@
 ﻿using AnimeFlix.Domain.Core.Bus;
 using AnimeFlix.Domain.Core.Data;
 using AnimeFlix.Domain.Models.Anime;
+using AnimeFlix.Domain.Models.Character;
 using AnimeFlix.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -18,11 +19,16 @@ namespace AnimeFlix.Infra.Data.Context
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
         public DbSet<AnimeModel> Animes { get; set; }
-
+        public DbSet<CharacterModel> Characters { get; set; }
+        public DbSet<EpisodeModel> Episodes { get; set; }
+        public DbSet<RatingModel> Ratings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             //Aplicando o mapeamento
             modelBuilder.ApplyConfiguration(new AnimeMap());
+            modelBuilder.ApplyConfiguration(new CharacterMap());
+            modelBuilder.ApplyConfiguration(new EpisodeMap());
+            modelBuilder.ApplyConfiguration(new RatingMap());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,8 +1,12 @@
 ﻿namespace AnimeFlix.Domain.Models.Anime
 {
-    public class AnimeEpisodeModel
+    public class EpisodeModel
     {
-        public AnimeEpisodeModel(int id, int episodeNumber, string title, string description, string videoUrl, int duration, int animeId)
+        protected EpisodeModel()
+        {
+        }
+
+        public EpisodeModel(int id, int episodeNumber, string title, string description, string videoUrl, int duration, int animeId)
         {
             Id = id;
             EpisodeNumber = episodeNumber;
@@ -21,5 +25,6 @@
         public string VideoUrl { get; private set; }
         public int Duration { get; private set; }
         public int AnimeId { get; private set; }
+        public AnimeModel Anime { get; private set; }
     }
 }

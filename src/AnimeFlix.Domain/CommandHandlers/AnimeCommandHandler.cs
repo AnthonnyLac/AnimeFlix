@@ -40,7 +40,11 @@ namespace AnimeFlix.Domain.CommandHandlers
                 var animeModel = new AnimeModel(request.Title, request.Description, (AnimeCetegory)request.Genre, request.ReleaseYear, request.CoverImage, request.Trailer);
 
                 _animeRepository.Add(animeModel);
- 
+
+                if (!(await Commit(_animeRepository.UnitOfWork)).IsValid) 
+                {
+                    throw new Exception("Commit Error");
+                }
 
                 return await Commit(_animeRepository.UnitOfWork);
             }

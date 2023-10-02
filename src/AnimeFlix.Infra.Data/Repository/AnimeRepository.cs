@@ -35,19 +35,19 @@ namespace AnimeFlix.Infra.Data.Repository
             return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Title == name);
         }
 
-        public void Add(AnimeModel anime)
+        public void Add(AnimeModel model)
         {
-            DbSet.Add(anime);
+            DbSet.Add(model);
         }
 
-        public void Remove(AnimeModel anime)
+        public void Remove(AnimeModel model)
         {
-            DbSet.Remove(anime);
+            DbSet.Remove(model);
         }
 
-        public void Update(AnimeModel anime)
+        public void Update(AnimeModel model)
         {
-            DbSet.Update(anime);
+            DbSet.Update(model);
         }
 
         public void Dispose()

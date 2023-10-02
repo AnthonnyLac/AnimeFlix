@@ -5,9 +5,9 @@
         Task<T> GetById(int id);
         Task<IEnumerable<T>> GetAll();
 
-        void Add(T anime);
-        void Update(T anime);
-        void Remove(T anime);
+        void Add(T model);
+        void Update(T model);
+        void Remove(T model);
         IUnitOfWork UnitOfWork { get; }
     }
 }

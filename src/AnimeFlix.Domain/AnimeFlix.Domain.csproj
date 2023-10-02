@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
     <Folder Include="Models\Character\" />
     <Folder Include="Models\User\" />
   </ItemGroup>

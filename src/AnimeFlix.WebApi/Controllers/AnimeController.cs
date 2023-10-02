@@ -21,6 +21,9 @@ namespace AnimeFlix.WebApi.Controllers
         {
             var result = await _animeAppService.GetAll();
 
+            if (!result.Any())
+                return NotFound();
+
             return Ok(result);
         }
 
@@ -30,8 +33,12 @@ namespace AnimeFlix.WebApi.Controllers
         {
             var result = await _animeAppService.GetById(id);
 
+            if(result == null)
+                return NotFound();
+
             return Ok(result);
         }
+
 
         [HttpPost]
         [Route("new-anime")]
@@ -54,7 +61,7 @@ namespace AnimeFlix.WebApi.Controllers
             if (!result.IsValid)
                 return BadRequest(result);
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete]
@@ -63,7 +70,10 @@ namespace AnimeFlix.WebApi.Controllers
         {
             var result = await _animeAppService.Remove(id);
 
-            return Ok();
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return NoContent();
         }
     }
 }

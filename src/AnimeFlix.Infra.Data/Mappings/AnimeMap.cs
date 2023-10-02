@@ -23,8 +23,9 @@ namespace AnimeFlix.Infra.Data.Mappings
             builder.Property(a => a.Trailer).HasColumnName("Trailer").HasMaxLength(255).IsRequired();
 
             //Ignorando Props
-            builder.Ignore(a => a.Rating);
             builder.Ignore(a => a.AnimeEpisodes);
+            builder.Ignore(a => a.Characters);
+            builder.Ignore(a => a.Ratings);
 
             // Mapeamento do enum AnimeCetegory para string (no banco de dados)
             builder.Property(a => a.Genre)

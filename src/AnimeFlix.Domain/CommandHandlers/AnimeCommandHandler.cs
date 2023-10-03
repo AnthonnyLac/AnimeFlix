@@ -41,10 +41,6 @@ namespace AnimeFlix.Domain.CommandHandlers
 
                 _animeRepository.Add(animeModel);
 
-                if (!(await Commit(_animeRepository.UnitOfWork)).IsValid) 
-                {
-                    throw new Exception("Commit Error");
-                }
 
                 return await Commit(_animeRepository.UnitOfWork);
             }

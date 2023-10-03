@@ -1,37 +1,60 @@
 ﻿using AnimeFlix.Application.Interfaces;
 using AnimeFlix.Application.ViewModels;
+using AnimeFlix.Domain.Commands.EpisodeCommand;
+using AnimeFlix.Domain.Core.Bus;
+using AnimeFlix.Domain.Interfaces;
+using AutoMapper;
 using FluentValidation.Results;
 
 namespace AnimeFlix.Application.Services
 {
     public class EpisodeAppService : IEpisodeAppService
     {
+        private readonly IMapper _mapper;
+        private readonly IMediatorHandler _mediator;
+        private readonly IEpisodeRepository _episodeRepository;
 
-
-        public Task<IEnumerable<EpisodeViewModel>> GetAll()
+        public EpisodeAppService(IMapper mapper, IMediatorHandler mediator, IEpisodeRepository episodeRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _mediator = mediator;
+            _episodeRepository = episodeRepository;
         }
 
-        public Task<EpisodeViewModel> GetById(int id)
+        public async Task<IEnumerable<EpisodeViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _episodeRepository.GetAll();
+            return _mapper.Map<IEnumerable<EpisodeViewModel>>(result);
         }
 
-        public Task<ValidationResult> Register(EpisodeViewModel viewModel)
+        public async Task<EpisodeViewModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _episodeRepository.GetById(id);
+            return _mapper.Map<EpisodeViewModel>(result);
+        }
+
+        public async Task<ValidationResult> Register(EpisodeViewModel viewModel)
+        {
+            var map = _mapper.Map<RegisterNewEpisodeCommand>(viewModel);
+            var result = await _mediator.SendCommand<RegisterNewEpisodeCommand>(map);
+
+            return result;
+        }
+        public async Task<ValidationResult> Update(EpisodeViewModel viewModel)
+        {
+            var map = _mapper.Map<UpdateEpisodeCommand>(viewModel);
+            var result = await _mediator.SendCommand<UpdateEpisodeCommand>(map);
+
+            return result;
         }
 
         public Task<ValidationResult> Remove(int id)
         {
-            throw new NotImplementedException();
+            var command = new DeleteEpisodeCommand(id);
+            return _mediator.SendCommand(command);
         }
 
-        public Task<ValidationResult> Update(EpisodeViewModel viewModel)
-        {
-            throw new NotImplementedException();
-        }
+
         public void Dispose()
         {
             Console.WriteLine("Dispose rolou");

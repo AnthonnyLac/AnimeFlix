@@ -3,6 +3,8 @@ using AnimeFlix.Application.Services;
 using AnimeFlix.Domain.CommandHandlers;
 using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Commands.CharacterCommand;
+using AnimeFlix.Domain.Commands.EpisodeCommand;
+using AnimeFlix.Domain.Commands.RatingCommand;
 using AnimeFlix.Domain.Core.Bus;
 using AnimeFlix.Domain.Interfaces;
 using AnimeFlix.Domain.Models.Anime;
@@ -36,9 +38,19 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdateCharacterCommand, ValidationResult>, CharacterCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteCharacterCommand, ValidationResult>, CharacterCommandHandler>();
 
+            services.AddScoped<IRequestHandler< RegisterNewEpisodeCommand, ValidationResult >, EpisodeCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateEpisodeCommand, ValidationResult>, EpisodeCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteEpisodeCommand, ValidationResult>, EpisodeCommandHandler>();
+
+            services.AddScoped<IRequestHandler<RegisterNewRatingCommand, ValidationResult>, RatingCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateRatingCommand, ValidationResult>, RatingCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteRatingCommand, ValidationResult>, RatingCommandHandler>();
+
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IEpisodeRepository, EpisodeRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
 
         }
     }

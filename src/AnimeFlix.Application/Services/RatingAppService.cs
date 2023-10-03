@@ -1,34 +1,62 @@
 ﻿using AnimeFlix.Application.Interfaces;
 using AnimeFlix.Application.ViewModels;
+using AnimeFlix.Domain.Commands.RatingCommand;
+using AnimeFlix.Domain.Core.Bus;
+using AnimeFlix.Domain.Interfaces;
+using AutoMapper;
 using FluentValidation.Results;
 
 namespace AnimeFlix.Application.Services
 {
     public class RatingAppService : IRatingAppService
     {
-        public Task<IEnumerable<RatingViewModel>> GetAll()
+        private readonly IMapper _mapper;
+        private readonly IMediatorHandler _mediator;
+        private readonly IRatingRepository _ratingRepository;
+
+        public RatingAppService(IMapper mapper, IMediatorHandler mediator, IRatingRepository ratingRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _mediator = mediator;
+            _ratingRepository = ratingRepository;
         }
 
-        public Task<RatingViewModel> GetById(int id)
+        public async Task<IEnumerable<RatingViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _ratingRepository.GetAll();
+            return _mapper.Map<IEnumerable<RatingViewModel>>(result);
         }
 
-        public Task<ValidationResult> Register(RatingViewModel viewModel)
+        public async Task<RatingViewModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _ratingRepository.GetById(id);
+            return _mapper.Map<RatingViewModel>(result);
         }
 
-        public Task<ValidationResult> Remove(int id)
+        public async Task<ValidationResult> Register(RatingViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var map = _mapper.Map<RegisterNewRatingCommand>(viewModel);
+            var result = await  _mediator.SendCommand<RegisterNewRatingCommand>(map);
+
+            return result;
         }
 
-        public Task<ValidationResult> Update(RatingViewModel viewModel)
+
+
+        public async Task<ValidationResult> Update(RatingViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var map = _mapper.Map<UpdateRatingCommand>(viewModel);
+            var result = await _mediator.SendCommand<UpdateRatingCommand>(map);
+
+            return result;
+        }
+
+        public async Task<ValidationResult> Remove(int id)
+        {
+           var command = new DeleteRatingCommand(id);
+           var result = await _mediator.SendCommand(command);
+
+           return result;
         }
 
         public void Dispose()

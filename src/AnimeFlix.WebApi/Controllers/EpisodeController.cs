@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AnimeFlix.Application.Interfaces;
+using AnimeFlix.Application.Services;
+using AnimeFlix.Application.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnimeFlix.WebApi.Controllers
@@ -7,40 +10,67 @@ namespace AnimeFlix.WebApi.Controllers
     [ApiController]
     public class EpisodeController : ControllerBase
     {
+        private readonly IEpisodeAppService _episodeAppService;
 
-        [HttpPost]
-        public IActionResult Create()
+        public EpisodeController(IEpisodeAppService episodeAppService)
         {
-            // Lógica de criação
-            return CreatedAtAction(nameof(Get), new { id = 1 });
+            _episodeAppService = episodeAppService;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get()
+        [HttpGet("get-episode-list")]
+        public async Task<IActionResult> GetAll()
         {
-            // Lógica de obtenção por ID
-            return Ok();
+            var result = await _episodeAppService.GetAll();
+
+            if(!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet("get-episode-by-id")]
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
+            var result = await _episodeAppService.GetById(id);
 
-            return Ok();
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
 
-        [HttpPatch]
-        public IActionResult Update()
+        [HttpPost("register-episode")]
+        public async Task<IActionResult> Create(EpisodeViewModel model)
         {
-          
-            return NoContent();
+            var result = await _episodeAppService.Register(model);
+
+            if(!result.IsValid)
+                return BadRequest(result);
+
+            return CreatedAtAction(nameof(Create), new { result.IsValid });
         }
 
-        [HttpDelete("{id}")]
+
+        [HttpPatch("update-episode")]
+        public async Task<IActionResult> Update(EpisodeViewModel model)
+        {
+            var result = await _episodeAppService.Update(model);
+
+            if (!result.IsValid)
+                return BadRequest(result);
+            
+            return Ok(new { result.IsValid });
+        }
+
+        [HttpDelete("delete-episode")]
         public async Task<IActionResult> Delete(int id)
         {
-            
-            return NoContent();
+            var result = await _episodeAppService.Remove(id);
+
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return Ok(new { result.IsValid });
         }
     }
 }

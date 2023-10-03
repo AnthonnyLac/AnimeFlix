@@ -2,9 +2,8 @@
 {
     public class RatingModel
     {
-        public RatingModel(int id, int animeId, double averageRating, int totalRatings, DateTime lastUpdated)
+        public RatingModel( int animeId, double averageRating, int totalRatings, DateTime lastUpdated)
         {
-            Id = id;
             AnimeId = animeId;
             AverageRating = averageRating;
             TotalRatings = totalRatings;
@@ -20,5 +19,6 @@
         public double AverageRating { get; private set; }
         public int TotalRatings { get; private set; }
         public DateTime LastUpdated { get; private set; }
+        public void SetId(int id) => Id = id;
     }
 }

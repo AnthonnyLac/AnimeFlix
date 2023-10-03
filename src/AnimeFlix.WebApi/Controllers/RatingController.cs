@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AnimeFlix.Application.Interfaces;
+using AnimeFlix.Application.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimeFlix.WebApi.Controllers
@@ -7,39 +9,67 @@ namespace AnimeFlix.WebApi.Controllers
     [ApiController]
     public class RatingController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Create()
+        private readonly IRatingAppService _ratingAppService;
+
+        public RatingController(IRatingAppService ratingAppService)
         {
-            // Lógica de criação
-            return CreatedAtAction(nameof(Get), new { id = 1 });
+            _ratingAppService = ratingAppService;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get()
+        [HttpGet("get-rating-list")]
+        public async Task<IActionResult> GetAllAsync()
         {
-            // Lógica de obtenção por ID
-            return Ok();
+            var result = await _ratingAppService.GetAll();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet("get-rating-by-id")]
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
+            var result = await _ratingAppService.GetById(id);
 
-            return Ok();
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
 
-        [HttpPatch]
-        public IActionResult Update()
+        [HttpPost("register-rating")]
+        public async Task<IActionResult> Create(RatingViewModel model)
         {
+            var result = await _ratingAppService.Register(model);
 
-            return NoContent();
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return CreatedAtAction(nameof(Create), new { result.IsValid });
         }
 
-        [HttpDelete("{id}")]
+
+        [HttpPatch("update-rating")]
+        public async Task<IActionResult> Update(RatingViewModel model)
+        {
+            var result = await _ratingAppService.Update(model);
+
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return Ok(new { result.IsValid });
+        }
+
+        [HttpDelete("delete-rating")]
         public async Task<IActionResult> Delete(int id)
         {
+            var result = await _ratingAppService.Remove(id);
 
-            return NoContent();
+            if (!result.IsValid)
+                return BadRequest(result);
+
+            return Ok(new { result.IsValid });
         }
     }
 }

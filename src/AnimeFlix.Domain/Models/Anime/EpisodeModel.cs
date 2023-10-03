@@ -6,9 +6,8 @@
         {
         }
 
-        public EpisodeModel(int id, int episodeNumber, string title, string description, string videoUrl, int duration, int animeId)
+        public EpisodeModel( int episodeNumber, string title, string description, string videoUrl, int duration, int animeId)
         {
-            Id = id;
             EpisodeNumber = episodeNumber;
             Title = title;
             Description = description;
@@ -26,5 +25,6 @@
         public int Duration { get; private set; }
         public int AnimeId { get; private set; }
         public AnimeModel Anime { get; private set; }
+        public void SetId(int id) => Id = id; 
     }
 }

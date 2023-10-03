@@ -22,14 +22,36 @@ namespace AnimeFlix.Application.AutoMapper
                     });
 
             CreateMap<CharacterModel, CharacterViewModel>()
-                .ConstructUsing(c => new CharacterViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Description = c.Description,
-                    ImageUrl = c.ImageUrl,
-                    AnimeId = c.AnimeId
-                });
+                    .ConstructUsing(c => new CharacterViewModel()
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Description = c.Description,
+                        ImageUrl = c.ImageUrl,
+                        AnimeId = c.AnimeId
+                    });
+
+            CreateMap<EpisodeModel, EpisodeViewModel>()
+                    .ConstructUsing(c => new EpisodeViewModel()
+                    {
+                        Id = c.Id,
+                        EpisodeNumber = c.EpisodeNumber,
+                        Title = c.Title,
+                        VideoUrl = c.VideoUrl,
+                        Duration = c.Duration,
+                        AnimeId = c.AnimeId
+                    });
+
+            CreateMap<RatingModel, RatingViewModel>()
+                    .ConstructUsing(c => new RatingViewModel()
+                    {
+                        Id = c.Id,
+                        AnimeId = c.AnimeId,
+                        AverageRating = c.AverageRating,
+                        TotalRatings = c.TotalRatings,
+                        LastUpdated = c.LastUpdated
+                    });
         }
     }
 }
+

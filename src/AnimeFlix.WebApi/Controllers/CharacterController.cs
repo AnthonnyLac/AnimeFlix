@@ -16,7 +16,7 @@ namespace AnimeFlix.WebApi.Controllers
             _characterAppService = characterAppService;
         }
 
-        [HttpGet("buscar-todos-personagens")]
+        [HttpGet("get-character-list")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _characterAppService.GetAll();
@@ -27,7 +27,7 @@ namespace AnimeFlix.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpGet("buscar-personagens-por-id/{id}")]
+        [HttpGet("get-character-by-id")]
         public async Task<IActionResult> GetAsync(int id)
         {
             var result = await _characterAppService.GetById(id);
@@ -38,7 +38,7 @@ namespace AnimeFlix.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("cadastrar-personagem")]
+        [HttpPost("register-character")]
         public async Task<IActionResult> Create(CharacterViewModel characterViewModel)
         {
             var result = await _characterAppService.Register(characterViewModel);
@@ -50,7 +50,7 @@ namespace AnimeFlix.WebApi.Controllers
         }
 
 
-        [HttpPatch("atualizar-personagem")]
+        [HttpPatch("update-character")]
         public async Task<IActionResult> Update(CharacterViewModel characterViewModel)
         {
             var result = await _characterAppService.Update(characterViewModel);
@@ -61,7 +61,7 @@ namespace AnimeFlix.WebApi.Controllers
             return NoContent();
         }
 
-        [HttpDelete("deletar-personagem/{id}")]
+        [HttpDelete("delete-character")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _characterAppService.Remove(id);

@@ -3,6 +3,7 @@ using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
+using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Models.Anime;
 using AutoMapper;
 
@@ -36,9 +37,15 @@ namespace AnimeFlix.Application.AutoMapper
             CreateMap<RatingViewModel, RegisterNewRatingCommand>()
                 .ConstructUsing(c => new RegisterNewRatingCommand(c.AnimeId, c.AverageRating,c.TotalRatings));
 
-
             CreateMap<RatingViewModel, UpdateRatingCommand>()
                 .ConstructUsing(c => new UpdateRatingCommand(c.Id, c.AnimeId, c.AverageRating, c.TotalRatings));
+                
+
+            CreateMap<UserViewModel, RegisterUserCommand>()
+                .ConstructUsing(c => new RegisterUserCommand(c.Name, c.Bio, c.Email, c.Phone));
+
+            CreateMap<UserViewModel, UpdateUserCommand>()
+                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone));
 
         }
     }

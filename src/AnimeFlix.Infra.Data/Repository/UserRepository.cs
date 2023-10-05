@@ -20,11 +20,6 @@ namespace AnimeFlix.Infra.Data.Repository
         public IUnitOfWork UnitOfWork => Db;
 
 
-        public async Task<IEnumerable<UserModel>> GetAll()
-        {
-            return await DbSet.ToListAsync();
-        }
-
         public async Task<UserModel> GetById(int id)
         {
             return await DbSet.FindAsync(id);

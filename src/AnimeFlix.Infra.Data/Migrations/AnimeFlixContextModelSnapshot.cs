@@ -162,6 +162,44 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.ToTable("Characters");
                 });
 
+            modelBuilder.Entity("AnimeFlix.Domain.Models.Plan.SubscriptionPlanModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("Description");
+
+                    b.Property<int>("DurationInDays")
+                        .HasColumnType("int")
+                        .HasColumnName("DurationInDays");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsActive");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("Name");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)")
+                        .HasColumnName("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubscriptionPlans", (string)null);
+                });
+
             modelBuilder.Entity("AnimeFlix.Domain.Models.User.AddressModel", b =>
                 {
                     b.Property<int>("Id")
@@ -265,6 +303,40 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserSubscriptionModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int")
+                        .HasColumnName("PlanId");
+
+                    b.Property<DateTime>("SubscriptionEndDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("SubscriptionEndDate");
+
+                    b.Property<DateTime>("SubscriptionStartDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("SubscriptionStartDate");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlanId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserSubscriptions", (string)null);
+                });
+
             modelBuilder.Entity("AnimeFlix.Domain.Models.Anime.EpisodeModel", b =>
                 {
                     b.HasOne("AnimeFlix.Domain.Models.Anime.AnimeModel", "Anime")
@@ -305,6 +377,25 @@ namespace AnimeFlix.Infra.Data.Migrations
                         .HasForeignKey("AnimeFlix.Domain.Models.User.AddressModel", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserSubscriptionModel", b =>
+                {
+                    b.HasOne("AnimeFlix.Domain.Models.Plan.SubscriptionPlanModel", "Plan")
+                        .WithMany()
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AnimeFlix.Domain.Models.User.UserModel", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Plan");
 
                     b.Navigation("User");
                 });

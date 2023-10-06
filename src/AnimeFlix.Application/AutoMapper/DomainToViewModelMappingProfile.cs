@@ -1,6 +1,7 @@
 ﻿using AnimeFlix.Application.ViewModels;
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.Character;
+using AnimeFlix.Domain.Models.Plan;
 using AnimeFlix.Domain.Models.User;
 using AutoMapper;
 
@@ -69,6 +70,19 @@ namespace AnimeFlix.Application.AutoMapper
                     State = src.Address.State,
                     Country = src.Address.Country
                 }));
+
+            CreateMap<SubscriptionPlanModel, PlanViewModel>()
+                .ConstructUsing(c => new PlanViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    Price = c.Price,
+                    DurationInDays = c.DurationInDays,
+                    IsActive = c.IsActive
+
+                });
+
 
 
         }

@@ -2,6 +2,7 @@
 using AnimeFlix.Domain.Core.Data;
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.Character;
+using AnimeFlix.Domain.Models.Plan;
 using AnimeFlix.Domain.Models.User;
 using AnimeFlix.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace AnimeFlix.Infra.Data.Context
         public DbSet<EpisodeModel> Episodes { get; set; }
         public DbSet<RatingModel> Ratings { get; set; }
         public DbSet<UserModel> Users { get; set; }
+        public DbSet<SubscriptionPlanModel> SubscriptionPlan { get; set; }
+        public DbSet<UserSubscriptionModel> UserSubscription { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             //Aplicando o mapeamento
@@ -33,6 +36,8 @@ namespace AnimeFlix.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new RatingMap());
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new AddressMap());
+            modelBuilder.ApplyConfiguration(new UserSubscriptionMap());
+            modelBuilder.ApplyConfiguration(new SubscriptionPlanMap());
 
             base.OnModelCreating(modelBuilder);
         }

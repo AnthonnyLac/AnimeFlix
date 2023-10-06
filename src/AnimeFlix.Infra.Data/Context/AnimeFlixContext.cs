@@ -44,5 +44,20 @@ namespace AnimeFlix.Infra.Data.Context
 
             return success;
         }
+
+        public void BeginTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RollBack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetDbContext()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

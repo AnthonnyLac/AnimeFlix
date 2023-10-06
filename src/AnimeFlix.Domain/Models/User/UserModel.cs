@@ -1,6 +1,8 @@
 
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.Character;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnimeFlix.Domain.Models.User
 {
@@ -29,7 +31,8 @@ namespace AnimeFlix.Domain.Models.User
         public UserModel()
         {
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Bio { get; private set; }
@@ -42,6 +45,7 @@ namespace AnimeFlix.Domain.Models.User
 
 
         public void SetId(int id) => Id = id;
+        public void SetAddress(AddressModel address) => Address = address;
 
     }
 }

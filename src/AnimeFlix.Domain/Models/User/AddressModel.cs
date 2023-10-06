@@ -16,7 +16,7 @@ namespace AnimeFlix.Domain.Models.User
             UserId = userId;
         }
 
-        public AddressModel(string street, int number, string city, string state, string country, string zipCode, int userId)
+        public AddressModel(string street, int number, string city, string state, string country, string zipCode, string complement, int userId )
         {
             Street = street;
             Number = number;
@@ -24,6 +24,7 @@ namespace AnimeFlix.Domain.Models.User
             State = state;
             Country = country;
             ZipCode = zipCode;
+            Complement = complement;
             UserId = userId;
         }
 

@@ -1,4 +1,4 @@
-﻿using AnimeFlix.Domain.Models.User;
+using AnimeFlix.Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Net;

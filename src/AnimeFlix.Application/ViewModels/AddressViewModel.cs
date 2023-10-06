@@ -1,4 +1,4 @@
-﻿namespace AnimeFlix.Application.ViewModels
+namespace AnimeFlix.Application.ViewModels
 {
     public class AddressViewModel : ViewModel
     {
@@ -9,5 +9,6 @@
         public string State { get;  set; }
         public string Country { get;  set; }
         public string ZipCode { get;  set; }
+        public int UserId { get;  set; }
     }
 }

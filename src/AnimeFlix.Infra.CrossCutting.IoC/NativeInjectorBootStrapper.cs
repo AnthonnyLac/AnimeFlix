@@ -1,6 +1,7 @@
 ﻿using AnimeFlix.Application.Interfaces;
 using AnimeFlix.Application.Services;
 using AnimeFlix.Domain.CommandHandlers;
+using AnimeFlix.Domain.Commands.AddressCommand;
 using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
@@ -29,6 +30,7 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             // Application
+            services.AddScoped<IAddressAppService, AddressAppService>();
             services.AddScoped<IAnimeAppService, AnimeAppService>();
             services.AddScoped<IEpisodeAppService, EpisodeAppService>();
             services.AddScoped<IRatingAppService, RatingAppService>();
@@ -61,6 +63,10 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<RegisterNewPlanCommand, ValidationResult>, PlanCommandHandler>();
             services.AddScoped<IRequestHandler<UpdatePlanCommand, ValidationResult>, PlanCommandHandler>();
             services.AddScoped<IRequestHandler<DeletePlanCommand, ValidationResult>, PlanCommandHandler>();
+
+            services.AddScoped<IRequestHandler<RegisterAddressCommand, ValidationResult>, AddressCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateAddressCommand, ValidationResult>, AddressCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteAddressCommand, ValidationResult>, AddressCommandHandler>();
 
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();

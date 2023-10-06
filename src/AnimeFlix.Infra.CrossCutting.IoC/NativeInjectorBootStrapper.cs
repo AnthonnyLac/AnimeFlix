@@ -7,6 +7,7 @@ using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
 using AnimeFlix.Domain.Commands.PlanCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
+using AnimeFlix.Domain.Commands.SubscriptionCommand;
 using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Core.Bus;
 using AnimeFlix.Domain.Core.Data;
@@ -18,6 +19,7 @@ using AnimeFlix.Infra.Data.Context;
 using AnimeFlix.Infra.Data.Repository;
 using FluentValidation.Results;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AnimeFlix.Infra.CrossCutting.IoC
@@ -26,6 +28,7 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services) 
         {
+
             // Domain Bus (Mediator)
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
@@ -37,6 +40,7 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<ICharacterAppService, CharacterAppService>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IPlanAppService, PlanAppService>();
+            services.AddScoped<ISubscriptionAppService, SubscriptionAppService>();
 
             // Domain - Commands
             services.AddScoped<IRequestHandler<RegisterNewAnimeCommand, ValidationResult>, AnimeCommandHandler>();
@@ -68,6 +72,11 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdateAddressCommand, ValidationResult>, AddressCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteAddressCommand, ValidationResult>, AddressCommandHandler>();
 
+
+            services.AddScoped<IRequestHandler<RegisterSubscriptionCommand, ValidationResult>, SubscriptionCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateSubscriptionCommand, ValidationResult>, SubscriptionCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteSubscriptionCommand, ValidationResult>, SubscriptionCommandHandler>();
+
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();
@@ -76,6 +85,7 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IPlanRepository, PlanRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
 
         }

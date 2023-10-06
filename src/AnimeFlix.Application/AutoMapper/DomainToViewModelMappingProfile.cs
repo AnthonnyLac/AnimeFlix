@@ -1,8 +1,7 @@
 ﻿using AnimeFlix.Application.ViewModels;
-using AnimeFlix.Domain.Commands.AnimeCommand;
-using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.Character;
+using AnimeFlix.Domain.Models.Plan;
 using AnimeFlix.Domain.Models.User;
 using AutoMapper;
 
@@ -55,14 +54,37 @@ namespace AnimeFlix.Application.AutoMapper
                     });
 
             CreateMap<UserModel, UserViewModel>()
-                    .ConstructUsing(c => new UserViewModel()
-                    {
-                        Id = c.Id,
-                        Name = c.Name,
-                        Bio = c.Bio,
-                        Email = c.Email,
-                        Phone = c.Phone,
-                    });
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Bio, opt => opt.MapFrom(src => src.Bio))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => new AddressViewModel
+                {
+                    Id = src.Address.Id,
+                    City = src.Address.City,
+                    Number = src.Address.Number,
+                    Complement = src.Address.Complement,
+                    Street = src.Address.Street,
+                    ZipCode = src.Address.ZipCode,
+                    State = src.Address.State,
+                    Country = src.Address.Country
+                }));
+
+            CreateMap<SubscriptionPlanModel, PlanViewModel>()
+                .ConstructUsing(c => new PlanViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    Price = c.Price,
+                    DurationInDays = c.DurationInDays,
+                    IsActive = c.IsActive
+
+                });
+
+
+
 
         CreateMap<AddressModel, AddressViewModel>()
                     .ConstructUsing(c => new AddressViewModel()

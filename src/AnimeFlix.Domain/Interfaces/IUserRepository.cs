@@ -7,5 +7,7 @@ namespace AnimeFlix.Domain.Interfaces
     {
         Task<UserModel> GetById(int id);
         Task<UserModel> GetByName(string name);
+        
+
     }
 }

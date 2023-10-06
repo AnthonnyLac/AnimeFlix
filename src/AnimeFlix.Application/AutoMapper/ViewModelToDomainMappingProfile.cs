@@ -2,6 +2,7 @@
 using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
+using AnimeFlix.Domain.Commands.PlanCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
 using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Commands.AddressCommand;
@@ -43,10 +44,18 @@ namespace AnimeFlix.Application.AutoMapper
                 
 
             CreateMap<UserViewModel, RegisterUserCommand>()
-                .ConstructUsing(c => new RegisterUserCommand(c.Name, c.Bio, c.Email, c.Phone));
+                .ConstructUsing(c => new RegisterUserCommand(c.Name, c.Bio, c.Email, c.Phone, c.Address.Street, c.Address.Number, c.Address.Complement, c.Address.City, c.Address.State, c.Address.Country, c.Address.ZipCode));
 
             CreateMap<UserViewModel, UpdateUserCommand>()
-                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone));
+                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone, c.Address.Id, c.Address.Street, c.Address.Number, c.Address.Complement, c.Address.City, c.Address.State, c.Address.Country, c.Address.ZipCode));
+
+
+            CreateMap<PlanViewModel, RegisterNewPlanCommand>()
+                .ConstructUsing(c => new RegisterNewPlanCommand(c.Name,c.Description,c.Price,c.DurationInDays,c.IsActive));
+
+            CreateMap<PlanViewModel, UpdatePlanCommand>()
+                .ConstructUsing(c => new UpdatePlanCommand(c.Id, c.Name, c.Description, c.Price, c.DurationInDays, c.IsActive));
+
 
             CreateMap<AddressViewModel, AddressUserCommand>()
                 .ConstructUsing(c => new AddressUserCommand(c.Street, c.City, c.Country, c.State, c.ZipCode, c.Number, c.Complement));

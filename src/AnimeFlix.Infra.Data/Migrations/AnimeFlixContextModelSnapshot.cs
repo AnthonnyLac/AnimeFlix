@@ -220,7 +220,7 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Addres", (string)null);
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserModel", b =>

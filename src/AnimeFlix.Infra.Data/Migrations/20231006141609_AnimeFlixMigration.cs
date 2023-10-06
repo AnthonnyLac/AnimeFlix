@@ -115,7 +115,7 @@ namespace AnimeFlix.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addres",
+                name: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -131,9 +131,9 @@ namespace AnimeFlix.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addres", x => x.Id);
+                    table.PrimaryKey("PK_Address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Addres_Users_UserId",
+                        name: "FK_Address_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -141,8 +141,8 @@ namespace AnimeFlix.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addres_UserId",
-                table: "Addres",
+                name: "IX_Address_UserId",
+                table: "Address",
                 column: "UserId",
                 unique: true);
 
@@ -166,7 +166,7 @@ namespace AnimeFlix.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Addres");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "Characters");

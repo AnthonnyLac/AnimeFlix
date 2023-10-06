@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeFlix.Infra.Data.Migrations
 {
     [DbContext(typeof(AnimeFlixContext))]
-    [Migration("20231006135542_AnimeFlixMigration")]
+    [Migration("20231006141609_AnimeFlixMigration")]
     partial class AnimeFlixMigration
     {
         /// <inheritdoc />
@@ -223,7 +223,7 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Addres", (string)null);
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserModel", b =>

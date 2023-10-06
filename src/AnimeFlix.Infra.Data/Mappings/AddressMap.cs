@@ -9,7 +9,7 @@ namespace AnimeFlix.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<AddressModel> builder)
         {
-            builder.ToTable("Addres"); // Nome da tabela no banco de dados
+            builder.ToTable("Address"); // Nome da tabela no banco de dados
 
             builder.HasKey(a => a.Id); // Chave primária
 
@@ -28,7 +28,8 @@ namespace AnimeFlix.Infra.Data.Mappings
 
             builder.HasOne(a => a.User)
                 .WithOne(u => u.Address)
-                .HasForeignKey<AddressModel>(a => a.UserId);
+                .HasForeignKey<AddressModel>(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

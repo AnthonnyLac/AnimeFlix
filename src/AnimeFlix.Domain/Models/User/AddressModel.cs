@@ -15,12 +15,10 @@ namespace AnimeFlix.Domain.Models.User
             ZipCode = zipCode;
         }
 
-        public AddressModel(int id, string street, int number, string city, string state, string country, string zipCode)
+        public AddressModel(string street, int number, string city, string state, string country, string zipCode)
         {
-            Id = id;
             Street = street;
             Number = number;
-            Complement = complement;
             City = city;
             State = state;
             Country = country;

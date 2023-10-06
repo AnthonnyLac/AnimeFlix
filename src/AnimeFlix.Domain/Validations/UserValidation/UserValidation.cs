@@ -1,4 +1,4 @@
-﻿using AnimeFlix.Domain.Commands.AnimeCommand;
+﻿using AnimeFlix.Domain.Commands.UserCommand;
 using FluentValidation;
 
 namespace AnimeFlix.Domain.Validations.UserValidation

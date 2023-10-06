@@ -63,6 +63,18 @@ namespace AnimeFlix.Application.AutoMapper
                         Email = c.Email,
                         Phone = c.Phone,
                     });
+
+        CreateMap<AddressModel, AddressViewModel>()
+                    .ConstructUsing(c => new AddressViewModel()
+                    {
+                        Id = c.Id,
+                        Street = c.Street,
+                        Number = c.Number,
+                        City = c.City,
+                        State = c.State,
+                        Country = c.Country,
+                        ZipCode = c.ZipCode,
+                    });
         }
     }
 }

@@ -4,6 +4,7 @@ using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
 using AnimeFlix.Domain.Commands.UserCommand;
+using AnimeFlix.Domain.Commands.AddressCommand;
 using AnimeFlix.Domain.Models.Anime;
 using AutoMapper;
 
@@ -46,6 +47,12 @@ namespace AnimeFlix.Application.AutoMapper
 
             CreateMap<UserViewModel, UpdateUserCommand>()
                 .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone));
+
+            CreateMap<AddressViewModel, AddressUserCommand>()
+                .ConstructUsing(c => new AddressUserCommand(c.Street, c.City, c.Country, c.State, c.ZipCode, c.Number, c.Complement));
+
+            CreateMap<AddressViewModel, UpdateAddressCommand>()
+                .ConstructUsing(c => new UpdateAddressCommand(c.Id, c.Street, c.City, c.Country, c.State, c.ZipCode, c.Number, c.Complement));
 
         }
     }

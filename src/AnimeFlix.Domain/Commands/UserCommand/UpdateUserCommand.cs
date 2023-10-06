@@ -1,4 +1,4 @@
-﻿using AnimeFlix.Domain.Validations.UserValidations;
+﻿using AnimeFlix.Domain.Validations.UserValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;

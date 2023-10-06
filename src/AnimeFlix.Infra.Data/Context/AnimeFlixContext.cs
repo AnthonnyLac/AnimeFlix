@@ -1,13 +1,10 @@
-﻿using AnimeFlix.Domain.Core.Bus;
-using AnimeFlix.Domain.Core.Data;
+﻿using AnimeFlix.Domain.Core.Data;
 using AnimeFlix.Domain.Models.Anime;
-using AnimeFlix.Domain.Models.Address;
 using AnimeFlix.Domain.Models.Character;
 using AnimeFlix.Domain.Models.Plan;
 using AnimeFlix.Domain.Models.User;
 using AnimeFlix.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace AnimeFlix.Infra.Data.Context
 {

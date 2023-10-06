@@ -64,6 +64,10 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdatePlanCommand, ValidationResult>, PlanCommandHandler>();
             services.AddScoped<IRequestHandler<DeletePlanCommand, ValidationResult>, PlanCommandHandler>();
 
+            services.AddScoped<IRequestHandler<RegisterAddressCommand, ValidationResult>, AddressCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateAddressCommand, ValidationResult>, AddressCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteAddressCommand, ValidationResult>, AddressCommandHandler>();
+
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();

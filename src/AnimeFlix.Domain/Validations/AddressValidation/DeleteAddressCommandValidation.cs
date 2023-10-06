@@ -1,4 +1,5 @@
 ﻿using AnimeFlix.Domain.Commands.AddressCommand;
+using AnimeFlix.Domain.Validations.AddressCommand;
 
 namespace AnimeFlix.Domain.Validations.AddressValidation
 {

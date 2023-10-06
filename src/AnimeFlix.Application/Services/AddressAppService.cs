@@ -14,13 +14,17 @@ namespace AnimeFlix.Application.Services
         private readonly IMediatorHandler _mediator;
         private readonly IAddressRepository _addressRepository;
 
-        public UserAppService(IMapper mapper, IMediatorHandler mediator, IAddressRepository addressRepository)
+        public AddressAppService(IMapper mapper, IMediatorHandler mediator, IAddressRepository addressRepository)
         {
             _mapper = mapper;
             _mediator = mediator;
             _addressRepository = addressRepository;
         }
-
+        public async Task<IEnumerable<AddressViewModel>> GetAll()
+        {
+            var result = await _addressRepository.GetAll();
+            return _mapper.Map<IEnumerable<AddressViewModel>>(result);
+        }
 
         public async Task<AddressViewModel> GetById(int id)
         {
@@ -46,7 +50,7 @@ namespace AnimeFlix.Application.Services
             return result;
         }
 
-        public async Task<ValidationResult> Delete(int id)
+        public async Task<ValidationResult> Remove(int id)
         {
            var command = new DeleteAddressCommand(id);
            var result = await _mediator.SendCommand(command);
@@ -59,5 +63,9 @@ namespace AnimeFlix.Application.Services
             Console.WriteLine("Dispose rolou");
             GC.SuppressFinalize(this);
         }
+
+
+
+
     }
 }

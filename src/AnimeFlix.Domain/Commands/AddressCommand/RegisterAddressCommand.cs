@@ -5,7 +5,8 @@ namespace AnimeFlix.Domain.Commands.AddressCommand
 {
     public class RegisterAddressCommand : AddressCommand
     {
-      public RegisterAddressCommand(string street, int number, string city, string state, string country, string zipCode)
+        //c.Street, c.Number, c.Complement, c.City, c.State, c.Country, c.ZipCode
+        public RegisterAddressCommand(string street, int number, string complement, string city, string state, string country, string zipCode, int userId)
         {
             Street = street;
             Number = number;
@@ -13,6 +14,8 @@ namespace AnimeFlix.Domain.Commands.AddressCommand
             State = state;
             Country = country;
             ZipCode = zipCode;
+            Complement = complement;
+            UserId = userId;
         }
 
         public override bool IsValid()

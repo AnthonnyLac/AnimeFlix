@@ -57,11 +57,11 @@ namespace AnimeFlix.Application.AutoMapper
                 .ConstructUsing(c => new UpdatePlanCommand(c.Id, c.Name, c.Description, c.Price, c.DurationInDays, c.IsActive));
 
 
-            CreateMap<AddressViewModel, AddressUserCommand>()
-                .ConstructUsing(c => new AddressUserCommand(c.Street, c.City, c.Country, c.State, c.ZipCode, c.Number, c.Complement));
+            CreateMap<AddressViewModel, RegisterAddressCommand>()
+                .ConstructUsing(c => new RegisterAddressCommand(c.Street, c.Number, c.Complement, c.City, c.State, c.Country, c.ZipCode, c.UserId));
 
             CreateMap<AddressViewModel, UpdateAddressCommand>()
-                .ConstructUsing(c => new UpdateAddressCommand(c.Id, c.Street, c.City, c.Country, c.State, c.ZipCode, c.Number, c.Complement));
+                .ConstructUsing(c => new UpdateAddressCommand(c.Street, c.Number, c.Complement, c.City, c.State, c.Country, c.ZipCode, c.UserId));
 
         }
     }

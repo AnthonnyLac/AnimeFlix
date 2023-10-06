@@ -1,8 +1,7 @@
 ﻿using AnimeFlix.Domain.Commands.AddressCommand;
 using AnimeFlix.Domain.Core.Commands;
 using AnimeFlix.Domain.Interfaces;
-using AnimeFlix.Domain.Models.Address;
-using AnimeFlix.Domain.Validations.AddressValidation;
+using AnimeFlix.Domain.Models.User;
 using FluentValidation.Results;
 using MediatR;
 
@@ -14,10 +13,12 @@ namespace AnimeFlix.Domain.CommandHandlers
         IRequestHandler<DeleteAddressCommand, ValidationResult>
     {
         private readonly IAddressRepository _addressRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AddressCommandHandler(IAddressRepository addressRepository)
+        public AddressCommandHandler(IAddressRepository addressRepository, IUserRepository userRepository)
         {
             _addressRepository = addressRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<ValidationResult> Handle(RegisterAddressCommand request, CancellationToken cancellationToken)
@@ -29,9 +30,24 @@ namespace AnimeFlix.Domain.CommandHandlers
                     return request.ValidationResult;
                 }
 
-                var addressModel = new AddressModel(request.Street, request.City, request.State, request.City, request.Country, request.ZipCode);
+                var user = await _userRepository.GetById(request.UserId);
 
-                _addressRepository.Add(addressModel);
+                if (user == null) 
+                {
+                    throw new InvalidOperationException("User não encontrado");
+                }
+
+                var adress = await _addressRepository.GetAdressByUserId(request.UserId);
+
+                if (adress != null)
+                {
+                    throw new InvalidOperationException("O usuario já tem um endereço");
+                }
+
+                var addressModel = new AddressModel(request.Street, request.Number,request.City,request.State,request.Country,request.ZipCode,request.Complement, request.UserId);
+                user.SetAddress(addressModel);
+
+                _userRepository.Update(user);
 
 
                 return await Commit(_addressRepository.UnitOfWork);
@@ -52,6 +68,14 @@ namespace AnimeFlix.Domain.CommandHandlers
                     return request.ValidationResult;
                 }
 
+                var user = await _userRepository.GetById(request.UserId);
+
+                if (user == null)
+                {
+                    throw new InvalidOperationException("User não encontrado");
+                }
+
+
                 var address = await _addressRepository.GetById(request.Id);
 
                 if (address == null)
@@ -59,8 +83,10 @@ namespace AnimeFlix.Domain.CommandHandlers
                     throw new Exception("Endereço não encontrado!");
                 }
 
-                var addressModel = new AddressModel(request.Street, request.City, request.State, request.City, request.Country, request.ZipCode);
+                var addressModel = new AddressModel(request.Street, request.Number, request.City, request.State, request.Country, request.ZipCode,request.Complement, request.UserId);
                 addressModel.SetId(request.Id);
+                addressModel.SetUser(user);
+
 
                 _addressRepository.Update(addressModel);
 

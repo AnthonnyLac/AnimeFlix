@@ -44,6 +44,7 @@ namespace AnimeFlix.Domain.Models.User
         public UserModel User { get; private set; }
 
         public void SetId(int id) => Id = id;
+        public void SetUser(UserModel user) => User = user;
 
     }
 }

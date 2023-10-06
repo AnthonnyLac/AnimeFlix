@@ -9,7 +9,7 @@ namespace AnimeFlix.Domain.Commands.AddressCommand
 {
     public class UpdateAddressCommand : AddressCommand
     {
-        public UpdateAddressCommand(string street, int number, string complement, string city, string state, string country, string zipCode)
+        public UpdateAddressCommand(string street, int number, string complement, string city, string state, string country, string zipCode, int userId)
         {
             Street = street;
             Number = number;
@@ -18,6 +18,7 @@ namespace AnimeFlix.Domain.Commands.AddressCommand
             State = state;
             Country = country;
             ZipCode = zipCode;
+            UserId = userId;
         }
         
         public override bool IsValid()

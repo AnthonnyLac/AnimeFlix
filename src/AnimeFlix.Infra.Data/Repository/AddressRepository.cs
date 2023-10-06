@@ -30,6 +30,10 @@ namespace AnimeFlix.Infra.Data.Repository
         {
             return await DbSet.FindAsync(id);
         }
+        public async Task<AddressModel> GetAdressByUserId(int userId)
+        {
+            return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.UserId == userId);
+        }
 
         public void Add(AddressModel model)
         {
@@ -56,5 +60,7 @@ namespace AnimeFlix.Infra.Data.Repository
         {
             await Db.SaveChangesAsync();
         }
+
+
     }
 }

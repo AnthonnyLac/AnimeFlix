@@ -3,14 +3,19 @@ using FluentValidation;
 
 namespace AnimeFlix.Domain.Validations.AddressCommand
 {
-    public abstract class AddressValidation<T> : AbstractValidator<T> where T : AddressCommand
+    public abstract class AddressValidation<T> : AbstractValidator<T> where T : Commands.AddressCommand.AddressCommand
     {
         protected void ValidateId()
         {
             RuleFor(c => c.Id)
                 .GreaterThan(0).WithMessage("Invalid Id");
         }
-        
+        protected void ValidateUserId()
+        {
+            RuleFor(c => c.UserId)
+                .GreaterThan(0).WithMessage("Invalid UserId");
+        }
+
         protected void ValidateStreet()
         {
             RuleFor(c => c.Street)
@@ -21,8 +26,7 @@ namespace AnimeFlix.Domain.Validations.AddressCommand
         protected void ValidateNumber()
         {
             RuleFor(c => c.Number)
-                .NotEmpty().WithMessage("Invalid Number")
-                .Length(1, 6).WithMessage("Invalid Number Size");
+                 .GreaterThan(0).WithMessage("Invalid Number");
         }
 
         protected void ValidateCity()

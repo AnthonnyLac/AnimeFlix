@@ -10,9 +10,9 @@
 
 ## Commands to run to build database
 
-1 - Open your terminal in the "\src\AnimeFlix.Infra.Data" folder
-2 - Run this command in terminal : dotnet ef database update --startup-project ..\AnimeFlix.WebApi
+- Open your terminal in the "\src\AnimeFlix.Infra.Data" folder
+- Run this command in terminal : dotnet ef database update --startup-project ..\AnimeFlix.WebApi
 
 ## Let's run
-1 - Open your terminal in the "\src\AnimeFlix.WebApi\AnimeFlix.WebApi" folder
-2 - Run this command in terminal : dotnet run
+- Open your terminal in the "\src\AnimeFlix.WebApi\AnimeFlix.WebApi" folder
+- Run this command in terminal : dotnet run

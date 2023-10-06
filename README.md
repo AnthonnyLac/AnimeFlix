@@ -1,18 +1,34 @@
 # AnimeFlix
 
+## Requisitos
 
+Para utilizar este projeto, você precisará ter os seguintes itens instalados em seu ambiente de desenvolvimento:
 
-## How to use:
-- You will need the latest Visual Studio 2022, dotnet-ef, and .NET Core SDK 6.0.
-- ***Please check if you have installed the same runtime version (SDK) described in global.json***
-- The latest SDK and tools can be downloaded from https://dot.net/core.
-- to install dotnet-ef you can run in powershell this command: dotnet tool install --global dotnet-ef
+- **Visual Studio 2022** (a versão mais recente).
+- **.NET Core SDK 6.0** (Certifique-se de ter a mesma versão que está especificada no arquivo global.json).
+  - Você pode baixar a versão mais recente do SDK e outras ferramentas em [dot.net/core](https://dot.net/core).
+- Para instalar a ferramenta **dotnet-ef**, execute o seguinte comando no PowerShell:
 
-## Commands to run to build database
+```bash
+dotnet tool install --global dotnet-ef
+```
+## Como criar o banco de dados
 
-- Open your terminal in the "\src\AnimeFlix.Infra.Data" folder
-- Run this command in terminal : dotnet ef database update --startup-project ..\AnimeFlix.WebApi
+Siga estas etapas para criar o banco de dados necessário para o projeto:
 
-## Let's run
-- Open your terminal in the "\src\AnimeFlix.WebApi\AnimeFlix.WebApi" folder
-- Run this command in terminal : dotnet run
+1. Abra seu terminal no diretório **\src\AnimeFlix.Infra.Data**.
+2. Execute o seguinte comando no terminal:
+
+```bash
+dotnet ef database update --startup-project ..\AnimeFlix.WebApi
+```
+## Executando o projeto
+
+Para iniciar o projeto AnimeFlix, siga estas etapas:
+
+- Abra seu terminal no diretório \src\AnimeFlix.WebApi\AnimeFlix.WebApi.
+- Execute o seguinte comando no terminal:
+
+```bash
+dotnet run
+```

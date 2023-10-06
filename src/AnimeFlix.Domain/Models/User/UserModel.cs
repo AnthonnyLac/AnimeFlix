@@ -6,7 +6,7 @@ namespace AnimeFlix.Domain.Models.User
 {
     public class UserModel
     {
-       public UserModel(int id, string name, string bio, string email, string phone, IEnumerable<AnimeModel> favoriteAnimes, IEnumerable<CharacterModel> favoriteCharacters, DateTime createdAt)
+        public UserModel(int id, string name, string bio, string email, string phone, IEnumerable<AnimeModel> favoriteAnimes, IEnumerable<CharacterModel> favoriteCharacters, DateTime createdAt)
         {
             Id = id;
             Name = name;
@@ -18,7 +18,7 @@ namespace AnimeFlix.Domain.Models.User
             CreatedAt = createdAt;
         }
 
-         public UserModel(string name, string bio, string email, string phone)
+        public UserModel(string name, string bio, string email, string phone)
         {
             Name = name;
             Bio = bio;
@@ -33,7 +33,7 @@ namespace AnimeFlix.Domain.Models.User
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Bio { get; private set; }
-         public string Email { get; private set; }
+        public string Email { get; private set; }
         public string Phone { get; private set; }
         public IEnumerable<AnimeModel> FavoriteAnimes { get; private set; }
         public IEnumerable<CharacterModel> FavoriteCharacters { get; private set; }

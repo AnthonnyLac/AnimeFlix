@@ -32,6 +32,7 @@ namespace AnimeFlix.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new EpisodeMap());
             modelBuilder.ApplyConfiguration(new RatingMap());
             modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -42,6 +43,21 @@ namespace AnimeFlix.Infra.Data.Context
             var success = await SaveChangesAsync() > 0;
 
             return success;
+        }
+
+        public void BeginTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RollBack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetDbContext()
+        {
+            throw new NotImplementedException();
         }
     }
 }

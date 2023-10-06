@@ -1,5 +1,6 @@
 ﻿using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Core.Commands;
+using AnimeFlix.Domain.Core.Data;
 using AnimeFlix.Domain.Interfaces;
 using AnimeFlix.Domain.Models.User;
 using AnimeFlix.Domain.Validations.UserValidation;
@@ -14,10 +15,12 @@ namespace AnimeFlix.Domain.CommandHandlers
         IRequestHandler<DeleteUserCommand, ValidationResult>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public UserCommandHandler(IUserRepository userRepository)
+        public UserCommandHandler(IUserRepository userRepository, IAddressRepository addressRepository) 
         {
             _userRepository = userRepository;
+            _addressRepository = addressRepository;
         }
 
         public async Task<ValidationResult> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -37,9 +40,10 @@ namespace AnimeFlix.Domain.CommandHandlers
                 }
 
                 var userModel = new UserModel(request.Name, request.Bio, request.Email, request.Phone);
+                var addressModel = new AddressModel(request.AddressStreet, request.AddressNumber, request.AddressCity, request.AddressState, request.AddressCountry, request.AddressZipCode, request.AddressComplement, userModel.Id);
+                userModel.SetAddress(addressModel);
 
                 _userRepository.Add(userModel);
-
 
                 return await Commit(_userRepository.UnitOfWork);
             }
@@ -66,8 +70,20 @@ namespace AnimeFlix.Domain.CommandHandlers
                     throw new Exception("Usuário não encontrado!");
                 }
 
+                var address = await _addressRepository.GetById(request.AddressId);
+
+                if (address == null)
+                {
+                    throw new Exception("Endereço não encontrado!");
+                }
+
                 var userModel = new UserModel(request.Name, request.Bio, request.Email, request.Phone);
                 userModel.SetId(request.Id);
+                
+                var addresModel = new AddressModel(request.AddressStreet, request.AddressNumber, request.AddressCity, request.AddressState, request.AddressCountry, request.AddressZipCode, request.AddressComplement, userModel.Id);
+                addresModel.SetId(request.Id);
+
+                userModel.SetAddress(addresModel);
 
                 _userRepository.Update(userModel);
 

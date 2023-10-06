@@ -7,10 +7,12 @@ using AnimeFlix.Domain.Commands.EpisodeCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
 using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Core.Bus;
+using AnimeFlix.Domain.Core.Data;
 using AnimeFlix.Domain.Interfaces;
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.User;
 using AnimeFlix.Infra.CrossCutting.Bus;
+using AnimeFlix.Infra.Data.Context;
 using AnimeFlix.Infra.Data.Repository;
 using FluentValidation.Results;
 using MediatR;
@@ -59,6 +61,8 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
             services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
 
         }
     }

@@ -3,7 +3,7 @@ namespace AnimeFlix.Domain.Models.User
 {
     public class AddressModel
     {
-       public AddressModel(int id, string street, int number, string complement, string city, string state, string country, string zipCode)
+       public AddressModel(int id, string street, int number, string complement, string city, string state, string country, string zipCode, int userId)
         {
             Id = id;
             Street = street;
@@ -13,9 +13,10 @@ namespace AnimeFlix.Domain.Models.User
             State = state;
             Country = country;
             ZipCode = zipCode;
+            UserId = userId;
         }
 
-        public AddressModel(string street, int number, string city, string state, string country, string zipCode)
+        public AddressModel(string street, int number, string city, string state, string country, string zipCode, string complement, int userId )
         {
             Street = street;
             Number = number;
@@ -23,6 +24,8 @@ namespace AnimeFlix.Domain.Models.User
             State = state;
             Country = country;
             ZipCode = zipCode;
+            Complement = complement;
+            UserId = userId;
         }
 
         public AddressModel()
@@ -37,6 +40,8 @@ namespace AnimeFlix.Domain.Models.User
         public string State { get; private set; }
         public string  Country { get; private set; }
         public string ZipCode { get; private set; }
+        public int UserId { get; private set; }
+        public UserModel User { get; private set; }
 
         public void SetId(int id) => Id = id;
 

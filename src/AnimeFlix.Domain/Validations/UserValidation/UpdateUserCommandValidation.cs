@@ -6,11 +6,21 @@ namespace AnimeFlix.Domain.Validations.UserValidation
     {
         public UpdateUserCommandValidation()
         {
+            //Validate User
             ValidateId();
             ValidateName();
             ValidateBio();
             ValidateEmail();
             ValidatePhone();
+
+            //Validate Address
+            ValidateAddressId();
+            ValidateAddressNumber();
+            ValidateAddressComplement();
+            ValidateAddressCountry();
+            ValidateAddressState();
+            ValidateAddressStreet();
+            ValidateAddressZipCode();
         }
     }
 }

@@ -42,10 +42,10 @@ namespace AnimeFlix.Application.AutoMapper
                 
 
             CreateMap<UserViewModel, RegisterUserCommand>()
-                .ConstructUsing(c => new RegisterUserCommand(c.Name, c.Bio, c.Email, c.Phone));
+                .ConstructUsing(c => new RegisterUserCommand(c.Name, c.Bio, c.Email, c.Phone, c.Address.Street, c.Address.Number, c.Address.Complement, c.Address.City, c.Address.State, c.Address.Country, c.Address.ZipCode));
 
             CreateMap<UserViewModel, UpdateUserCommand>()
-                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone));
+                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Bio, c.Email, c.Phone, c.Address.Id, c.Address.Street, c.Address.Number, c.Address.Complement, c.Address.City, c.Address.State, c.Address.Country, c.Address.ZipCode));
 
         }
     }

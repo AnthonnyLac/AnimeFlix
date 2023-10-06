@@ -17,6 +17,18 @@ namespace AnimeFlix.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("get-user-list")]
+        public async Task<IActionResult> GetUserList()
+        {
+            var result = await _userAppService.GetAll();
+
+            if (!result.Any())
+                return NotFound();
+
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("get-user-by-id")]
         public async Task<IActionResult> GetUserById(int id)
         {
@@ -57,7 +69,7 @@ namespace AnimeFlix.WebApi.Controllers
         [Route("delete-user")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _userAppService.Delete(id);
+            var result = await _userAppService.Remove(id);
 
             if (!result.IsValid)
                 return BadRequest(result);

@@ -20,7 +20,11 @@ namespace AnimeFlix.Application.Services
             _mediator = mediator;
             _userRepository = userRepository;
         }
-
+        public async Task<IEnumerable<UserViewModel>> GetAll()
+        {
+            var result = await _userRepository.GetAll();
+            return _mapper.Map<IEnumerable<UserViewModel>>(result);
+        }
 
         public async Task<UserViewModel> GetById(int id)
         {
@@ -46,7 +50,7 @@ namespace AnimeFlix.Application.Services
             return result;
         }
 
-        public async Task<ValidationResult> Delete(int id)
+        public async Task<ValidationResult> Remove(int id)
         {
            var command = new DeleteUserCommand(id);
            var result = await _mediator.SendCommand(command);
@@ -54,10 +58,15 @@ namespace AnimeFlix.Application.Services
            return result;
         }
 
+
         public void Dispose()
         {
             Console.WriteLine("Dispose rolou");
             GC.SuppressFinalize(this);
         }
+
+
+
+
     }
 }

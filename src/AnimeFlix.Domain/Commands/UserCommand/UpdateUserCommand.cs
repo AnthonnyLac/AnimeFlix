@@ -9,8 +9,9 @@ namespace AnimeFlix.Domain.Commands.UserCommand
 {
     public class UpdateUserCommand : UserCommand
     {
-        public UpdateUserCommand(string name, string bio, string email, string phone)
+        public UpdateUserCommand(int id, string name, string bio, string email, string phone)
         {
+            Id = id;
             Name = name;
             Bio = bio;
             Email = email;

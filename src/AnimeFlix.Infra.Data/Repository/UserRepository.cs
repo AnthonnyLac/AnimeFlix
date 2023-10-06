@@ -21,17 +21,18 @@ namespace AnimeFlix.Infra.Data.Repository
 
         public async Task<IEnumerable<UserModel>> GetAll()
         {
-            return await DbSet.ToListAsync();
+            return await DbSet.Include(u => u.Address).ToListAsync();
         }
 
         public async Task<UserModel> GetById(int id)
         {
-            return await DbSet.FindAsync(id);
+            return await DbSet.Where(u => u.Id == id).Include(u => u.Address).FirstOrDefaultAsync();
+
         }
 
         public async Task<UserModel> GetByName(string name)
         {
-            return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Name == name);
+            return await DbSet.AsNoTracking().Include(u => u.Address).FirstOrDefaultAsync(c => c.Name == name);
         }
 
         public void Add(UserModel model)

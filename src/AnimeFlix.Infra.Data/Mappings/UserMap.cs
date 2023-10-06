@@ -18,11 +18,12 @@ namespace AnimeFlix.Infra.Data.Mappings
             builder.Property(a => a.Bio).HasColumnName("Bio").HasMaxLength(1000).IsRequired();
             builder.Property(a => a.Email).HasColumnName("Email").IsRequired();
             builder.Property(a => a.Phone).HasColumnName("Phone").IsRequired();
+            builder.Property(p => p.CreatedAt).HasColumnName("CreatedAt").IsRequired().HasDefaultValueSql("GETDATE()");
+
 
             //Ignorando Props
             builder.Ignore(a => a.FavoriteAnimes);
             builder.Ignore(a => a.FavoriteCharacters);
-            builder.Ignore(a => a.CreatedAt);
 
         }
     }

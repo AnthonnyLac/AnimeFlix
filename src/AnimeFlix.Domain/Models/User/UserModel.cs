@@ -18,9 +18,8 @@ namespace AnimeFlix.Domain.Models.User
             CreatedAt = createdAt;
         }
 
-         public UserModel(int id, string name, string bio, string email, string phone)
+         public UserModel(string name, string bio, string email, string phone)
         {
-            Id = id;
             Name = name;
             Bio = bio;
             Email = email;

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Character\" />
-    <Folder Include="Models\User\" />
   </ItemGroup>
 
   <ItemGroup>

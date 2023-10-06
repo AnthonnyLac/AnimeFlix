@@ -162,6 +162,67 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.ToTable("Characters");
                 });
 
+            modelBuilder.Entity("AnimeFlix.Domain.Models.User.AddressModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("City");
+
+                    b.Property<string>("Complement")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("Complement");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("Country");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int")
+                        .HasColumnName("Number");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("State");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("Street");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("ZipCode");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Addres", (string)null);
+                });
+
             modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserModel", b =>
                 {
                     b.Property<int>("Id")
@@ -176,6 +237,12 @@ namespace AnimeFlix.Infra.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)")
                         .HasColumnName("Bio");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedAt")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -231,6 +298,17 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.Navigation("Anime");
                 });
 
+            modelBuilder.Entity("AnimeFlix.Domain.Models.User.AddressModel", b =>
+                {
+                    b.HasOne("AnimeFlix.Domain.Models.User.UserModel", "User")
+                        .WithOne("Address")
+                        .HasForeignKey("AnimeFlix.Domain.Models.User.AddressModel", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("AnimeFlix.Domain.Models.Anime.AnimeModel", b =>
                 {
                     b.Navigation("AnimeEpisodes");
@@ -238,6 +316,12 @@ namespace AnimeFlix.Infra.Data.Migrations
                     b.Navigation("Characters");
 
                     b.Navigation("Ratings");
+                });
+
+            modelBuilder.Entity("AnimeFlix.Domain.Models.User.UserModel", b =>
+                {
+                    b.Navigation("Address")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

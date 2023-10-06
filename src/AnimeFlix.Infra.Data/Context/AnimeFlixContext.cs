@@ -32,6 +32,7 @@ namespace AnimeFlix.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new EpisodeMap());
             modelBuilder.ApplyConfiguration(new RatingMap());
             modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
 
             base.OnModelCreating(modelBuilder);
         }

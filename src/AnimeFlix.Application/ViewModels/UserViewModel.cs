@@ -22,5 +22,6 @@ namespace AnimeFlix.Application.ViewModels
         [JsonIgnore]
         public int[]? FavoriteCharacters { get;  set; }
         public DateTime CreatedAt { get;  set; }
+
     }
 }

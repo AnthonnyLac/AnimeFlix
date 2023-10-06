@@ -1,7 +1,9 @@
 ﻿using AnimeFlix.Application.ViewModels;
 using AnimeFlix.Domain.Commands.AnimeCommand;
+using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Models.Anime;
 using AnimeFlix.Domain.Models.Character;
+using AnimeFlix.Domain.Models.User;
 using AutoMapper;
 
 namespace AnimeFlix.Application.AutoMapper
@@ -50,6 +52,16 @@ namespace AnimeFlix.Application.AutoMapper
                         AverageRating = c.AverageRating,
                         TotalRatings = c.TotalRatings,
                         LastUpdated = c.LastUpdated
+                    });
+
+            CreateMap<UserModel, UserViewModel>()
+                    .ConstructUsing(c => new UserViewModel()
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Bio = c.Bio,
+                        Email = c.Email,
+                        Phone = c.Phone,
                     });
         }
     }

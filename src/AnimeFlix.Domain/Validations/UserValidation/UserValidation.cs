@@ -32,5 +32,12 @@ namespace AnimeFlix.Domain.Validations.UserValidation
                 .Length(2, 500).WithMessage("Invalid Email");
         }
 
+        protected void ValidatePhone()
+        {
+            RuleFor(c => c.Phone)
+                .NotEmpty().WithMessage("Invalid Phone")
+                .Length(2, 24).WithMessage("Invalid Phone Size");
+        }
+
     }
 }

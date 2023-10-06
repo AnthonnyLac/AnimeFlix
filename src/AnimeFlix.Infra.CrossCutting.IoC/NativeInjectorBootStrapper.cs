@@ -5,9 +5,11 @@ using AnimeFlix.Domain.Commands.AnimeCommand;
 using AnimeFlix.Domain.Commands.CharacterCommand;
 using AnimeFlix.Domain.Commands.EpisodeCommand;
 using AnimeFlix.Domain.Commands.RatingCommand;
+using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Core.Bus;
 using AnimeFlix.Domain.Interfaces;
 using AnimeFlix.Domain.Models.Anime;
+using AnimeFlix.Domain.Models.User;
 using AnimeFlix.Infra.CrossCutting.Bus;
 using AnimeFlix.Infra.Data.Repository;
 using FluentValidation.Results;
@@ -28,6 +30,7 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IEpisodeAppService, EpisodeAppService>();
             services.AddScoped<IRatingAppService, RatingAppService>();
             services.AddScoped<ICharacterAppService, CharacterAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
 
             // Domain - Commands
             services.AddScoped<IRequestHandler<RegisterNewAnimeCommand, ValidationResult>, AnimeCommandHandler>();
@@ -46,11 +49,16 @@ namespace AnimeFlix.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdateRatingCommand, ValidationResult>, RatingCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteRatingCommand, ValidationResult>, RatingCommandHandler>();
 
+            services.AddScoped<IRequestHandler<RegisterUserCommand, ValidationResult>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateUserCommand, ValidationResult>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteUserCommand, ValidationResult>, UserCommandHandler>();
+
             // Repository
             services.AddScoped<IAnimeRepository, AnimeRepository>();
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
             services.AddScoped<IRatingRepository, RatingRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
         }
     }

@@ -8,6 +8,7 @@ using AnimeFlix.Domain.Commands.UserCommand;
 using AnimeFlix.Domain.Commands.AddressCommand;
 using AnimeFlix.Domain.Models.Anime;
 using AutoMapper;
+using AnimeFlix.Domain.Commands.SubscriptionCommand;
 
 namespace AnimeFlix.Application.AutoMapper
 {
@@ -62,6 +63,13 @@ namespace AnimeFlix.Application.AutoMapper
 
             CreateMap<AddressViewModel, UpdateAddressCommand>()
                 .ConstructUsing(c => new UpdateAddressCommand(c.Street, c.Number, c.Complement, c.City, c.State, c.Country, c.ZipCode, c.UserId));
+
+
+            CreateMap<SubscriptionViewModel, RegisterSubscriptionCommand>()
+                .ConstructUsing(c => new RegisterSubscriptionCommand(c.UserId,c.PlanId));
+
+            CreateMap<SubscriptionViewModel, UpdateSubscriptionCommand>()
+                .ConstructUsing(c => new UpdateSubscriptionCommand(c.Id, c.UserId, c.PlanId));
 
         }
     }

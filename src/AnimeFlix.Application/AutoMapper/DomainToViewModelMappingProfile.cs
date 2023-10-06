@@ -97,6 +97,19 @@ namespace AnimeFlix.Application.AutoMapper
                         Country = c.Country,
                         ZipCode = c.ZipCode,
                     });
+
+            CreateMap<UserSubscriptionModel, SubscriptionViewModel>()
+            .ConstructUsing(c => new SubscriptionViewModel()
+            {
+                Id = c.Id,
+                UserId = c.UserId,
+                PlanId = c.PlanId,
+                SubscriptionStartDate = c.SubscriptionStartDate,
+                SubscriptionEndDate = c.SubscriptionEndDate
+
+            });
+
+
         }
     }
 }

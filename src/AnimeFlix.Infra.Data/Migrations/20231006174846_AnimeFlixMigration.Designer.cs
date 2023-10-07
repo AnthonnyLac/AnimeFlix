@@ -4,6 +4,7 @@ using AnimeFlix.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeFlix.Infra.Data.Migrations
 {
     [DbContext(typeof(AnimeFlixContext))]
-    partial class AnimeFlixContextModelSnapshot : ModelSnapshot
+    [Migration("20231006174846_AnimeFlixMigration")]
+    partial class AnimeFlixMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

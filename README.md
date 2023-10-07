@@ -37,5 +37,5 @@ dotnet run
 
 ## Vídeos
 
-- [Anthonny](https://youtu.be/0Z3Y5n2XZ3o)
+- [Anthonny](https://www.youtube.com/watch?v=7gHQ0ZNpSgk)
 - [William Felipe](https://drive.google.com/drive/folders/1LoLGMKVTdMv0NcLqgYl30yl1jDmniew9?usp=sharing)

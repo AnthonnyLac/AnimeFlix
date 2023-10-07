@@ -12,6 +12,7 @@ Para utilizar este projeto, você precisará ter os seguintes itens instalados e
 ```bash
 dotnet tool install --global dotnet-ef
 ```
+
 ## Como criar o banco de dados
 
 Siga estas etapas para criar o banco de dados necessário para o projeto:
@@ -22,6 +23,7 @@ Siga estas etapas para criar o banco de dados necessário para o projeto:
 ```bash
 dotnet ef database update --startup-project ..\AnimeFlix.WebApi
 ```
+
 ## Executando o projeto
 
 Para iniciar o projeto AnimeFlix, siga estas etapas:
@@ -32,3 +34,8 @@ Para iniciar o projeto AnimeFlix, siga estas etapas:
 ```bash
 dotnet run
 ```
+
+## Vídeos
+
+- [Anthonny](https://youtu.be/0Z3Y5n2XZ3o)
+- [William Felipe(Parte 2)](https://youtu.be/wAKsH6FaFjc)

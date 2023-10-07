@@ -38,4 +38,4 @@ dotnet run
 ## Vídeos
 
 - [Anthonny](https://youtu.be/0Z3Y5n2XZ3o)
-- [William Felipe(Parte 2)](https://youtu.be/wAKsH6FaFjc)
+- [William Felipe](https://drive.google.com/drive/folders/1LoLGMKVTdMv0NcLqgYl30yl1jDmniew9?usp=sharing)

@@ -40,3 +40,4 @@ dotnet run
 - [Anthonny](https://www.youtube.com/watch?v=7gHQ0ZNpSgk)
 - [Otávio Moraes](https://www.youtube.com/watch?v=xOcdQKdffV0)
 - [William Felipe](https://drive.google.com/drive/folders/1LoLGMKVTdMv0NcLqgYl30yl1jDmniew9?usp=sharing)
+- [Otávio](https://www.youtube.com/watch?v=xOcdQKdffV0)
